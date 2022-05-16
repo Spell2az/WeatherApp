@@ -1,0 +1,18 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=20622d79_002D761a_002D4d6e_002D9d14_002Da8e458a71ddc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from CoordinateTranslationServiceTests.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;ProjectFile&gt;88DDF3C9-4642-4CB3-BE6D-F0EEF7A7A0C6/f:CoordinateTranslationServiceTests.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::88DDF3C9-4642-4CB3-BE6D-F0EEF7A7A0C6::net6.0::tests.WeatherServiceTests.CoordinateServiceReturnsCoordinates&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::88DDF3C9-4642-4CB3-BE6D-F0EEF7A7A0C6::net6.0::tests.WeatherServiceTests.WeatherServiceReturnsCorrectWeatherInfo&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e0b378d0_002Dece9_002D4467_002Da554_002Dfe2978a5fdf3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;ProjectFile&gt;88DDF3C9-4642-4CB3-BE6D-F0EEF7A7A0C6/f:CoordinateTranslationServiceTests.cs&lt;/ProjectFile&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fc937987_002Dd22f_002D4612_002Db4ae_002D771e6576f499/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::88DDF3C9-4642-4CB3-BE6D-F0EEF7A7A0C6::net6.0::tests.CoordinateTranslationServiceTests.Test1&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

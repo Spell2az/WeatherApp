@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center ">
+    <h1 class="display-4">Welcome to Weather App</h1>
+    <p>Enter your location to get your current weater.</p>
+    <form form-group id="location-form">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-5">
+                <input id="location-input" class="form-control" type="text" name="location" required placeholder="Your location (e.g. Nottingham, Peterborough)"/></div>
+        </div>
+        <br/>
+        <button id="location-submit" class="btn btn-primary" disabled type="submit">Get weather</button>
+    </form>
+</div>
+<br>
+<div id="weather-info" class="weather-info border  p-3" display>
+    <p>Current weather in <span id="result-location"></span> is <span id="result-weathermain"></span>(<span id="result-description"></span>)</p>
+    <p>Temperature:</p>
+    <ul class="list-group-flush">
+        <li class="list-group-item">Current temperature - <span id="result-current-temp"></span>℃</li>
+        <li class="list-group-item">Current temperature - <span id="result-maximum-temp"></span>℃</li>
+        <li class="list-group-item">Current temperature - <span id="result-minimum-temp"></span>℃</li>
+    </ul>
+    <p>Pressure - <span id="result-pressure"></span></p>
+    <p>Humidity - <span id="result-humidity"></span></p>
+    <p>Sunrise - <span id="result-sunrise"></span></p>
+    <p>Sunset - <span id="result-sunset"></span></p>
+</div>
+<div id="error-info" class=" text-center error-info alert alert-danger">
+    <p>We could't get weather information for the location you entered. Please enter a different location</p>
+</div>
+
+<script>
+const form = document.getElementById('location-form')
+const input = document.getElementById('location-input')
+const submit = document.getElementById('location-submit');
+const weatherInfo = document.getElementById('weather-info');
+const errorInfo = document.getElementById('error-info');
+
+
+toggleVisibility(errorInfo, false);
+toggleVisibility(weatherInfo, false)
+
+input.addEventListener('keyup', e =>{
+    submit.disabled= e.target.value.length < 3;
+})
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    fetch("@ViewData["ApiEndpoint"]"+"/get-weather",{
+        method: 'POST',
+        headers:{
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                    'location': input.value
+                })
+        }).then(response => {
+                  if (!response.ok)  throw Error(response.statusText);
+                  return response;
+              })
+              .then(response =>  response.json())
+              .then(data =>{
+                updateWeatherInfo(data);
+                toggleVisibility(errorInfo, false);
+                 toggleVisibility(weatherInfo, true);
+              })
+              .catch(error =>{
+                toggleVisibility(errorInfo, true);
+                toggleVisibility(weatherInfo, false);
+              });
+})
+
+function updateWeatherInfo(weatherInfo){
+    const locationName = document.getElementById('result-location')
+    const weatherMain = document.getElementById('result-weathermain')
+    const description = document.getElementById('result-description');
+    const currentTemp = document.getElementById('result-current-temp');
+    const maxTemp = document.getElementById('result-maximum-temp');
+    const minTemp = document.getElementById('result-minimum-temp');
+    const pressure = document.getElementById('result-pressure');
+    const humidity = document.getElementById('result-humidity');
+    const sunrise = document.getElementById('result-sunrise');
+    const sunset = document.getElementById('result-sunset');
+
+    locationName.innerText = weatherInfo.locationName;
+    weatherMain.innerText = weatherInfo.weatherMain;
+    description.innerText = weatherInfo.description;
+    currentTemp.innerText = weatherInfo.currentTemp;
+    maxTemp.innerText = weatherInfo.maximumTemp;
+    minTemp.innerText = weatherInfo.minimumTemp;
+    pressure.innerText = weatherInfo.pressure;
+    humidity.innerText = weatherInfo.humidity;
+    sunset.innerText = new Date(weatherInfo.sunset * 1000).toLocaleTimeString('en-GB');
+    sunrise.innerText = new Date(weatherInfo.sunrise * 1000).toLocaleTimeString('en-GB');
+
+
+}
+
+function toggleVisibility(element, isVisible){
+    element.style.display = isVisible ? 'block' : 'none';
+}
+</script>
